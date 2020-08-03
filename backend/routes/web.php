@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/product', 'ProductController@upload');
+Route::post('/product/proses', 'ProductController@proses_upload');
+Route::get('/product/hapus/{id}', 'ProductController@hapus');

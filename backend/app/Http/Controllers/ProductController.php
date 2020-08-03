@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
 	public function upload(){
 		$product = product::get();
-		return view('product',['product' => $product]);
+		return view('product.product',['product' => $product]);
 	}
 
 	public function proses_upload(Request $request){
