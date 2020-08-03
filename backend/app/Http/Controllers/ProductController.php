@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\product;
 use File;
 
@@ -12,6 +13,12 @@ class ProductController extends Controller
 		$product = product::get();
 		return view('product.product',['product' => $product]);
 	}
+
+	public function index($slug)
+    {
+        $show = Crud::where('slug_name', $slug)->first();
+        return view('product.product_view')->with('product', $product);
+    }
 
 	public function proses_upload(Request $request){
 		$this->validate($request, [
@@ -33,6 +40,7 @@ class ProductController extends Controller
 
 		product::create([
 			'name' => $request->name,
+			'slug_name' => $request->slug = Str::slug($request->get('name')),
 			'price' => $request->price,
 			'desc' => $request->desc,
 			'tag' => $request->tag,
