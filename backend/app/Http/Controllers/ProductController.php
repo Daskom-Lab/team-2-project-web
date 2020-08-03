@@ -16,8 +16,10 @@ class ProductController extends Controller
 
 	public function index($slug)
     {
-        $show = Crud::where('slug_name', $slug)->first();
-        return view('product.product_view')->with('product', $product);
+        $product = product::where('slug_name', $slug)->firstOrFail();
+        return view('product.product_view')->with([
+            'product' => $product,
+        ]);
     }
 
 	public function proses_upload(Request $request){

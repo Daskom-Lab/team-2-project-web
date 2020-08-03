@@ -66,8 +66,9 @@
                 <tbody>
                     @foreach($product as $p)
                     <tr>
-                        <td><img width="150px" src="{{ url('/data_file/'.$p->file) }}"></td>
-                         <td>{{$p->desc}}</td>
+                        <td><a href="/product/view/{{ $p->slug_name }}"><img width="150px" src="{{ url('/data_file/'.$p->file) }}"></a></td>
+                        <td><a href="/product/view/{{ $p->slug_name }}">{{$p->name}}</a></td>
+                        <td>{{$p->desc}}</td>
                         <td>{{$p->price}}</td>
                         <td>{{$p->tag}}</td>
                         <td><a class="btn btn-danger" href="/product/hapus/{{ $p->id }}">HAPUS</a></td>
